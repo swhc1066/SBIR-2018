@@ -1,0 +1,120 @@
+<main *ngIf="!show">
+  <img src="../assets/images/NSF.png">
+  <h1 id="homepagetitle" style="display: block; font-size: 60px; color: rgb(255, 255, 255); text-align: center; line-height: 82px;" data-inline-fontsize="true" data-inline-lineheight="true" data-fontsize="60" data-lineheight="82">2018 SBIR|STTR Phase II and PFI Grantee Conference</h1>
+  <h1 id="homesubtitle" style="color: rgb(255, 255, 255); font-size: 54px; text-align: center; line-height: 82px;" data-inline-fontsize="true" data-inline-lineheight="true" data-fontsize="54" data-lineheight="82">June 4-6, 2018</h1>
+</main>
+
+<div class="row" *ngIf="!show">
+  <div class="col-xs-12">
+    <div class="jumbotron">
+      <h1 style="margin-bottom: 50px; text-align: center">2018 Grantee Abstract Book</h1>
+      <p>
+        <strong>America's Seed Fund Powered by NSF</strong>
+      </p>
+      <p>
+        America's Seed Fund powered by NSF-the NSF's SBIR/STTR program-is the world's largest network of disruptive technology entrepreneurs. For more than 40 years, the program has helped startups and small businesses transform their ideas into marketable products and services. We focus on high-risk, high-impact technologies-those that show promise but whose success hasn't yet been validated-and, each year, we award nearly $190 million in funding to entrepreneurs across the country. Roland Tibbetts conceived the program at NSF in 1976 to support the small business community with a specific objective to provide early-stage financial support for high-risk technologies with commercial promise. Today the government-wide program is administered by the Small Business Administration and includes 11 Federal departments that collectively award more than $2.5 billion to small high-tech firms. The primary objective of the NSF SBIR/STTR Program is to increase the incentive and opportunity for small firms to undertake cutting-edge, high-risk, high-quality scientific, engineering, or science/engineering education research that would have a high-potential economic payoff if the research is successful.
+      </p>
+      <p>
+        <em>To learn more about America's Seed Fund powered by NSF, visit our website at </em><a href="https://seedfund.nsf.gov"><strong>https://seedfund.nsf.gov</strong></a>.
+      </p>
+      <p>
+        <strong>Partnerships for Innovation Program</strong>
+      </p>
+      <p>
+        The NSF Partnerships for Innovation (PFI) Program offers researchers the opportunity to transform new knowledge into societal benefits through translational research and technology development efforts that catalyze partnerships to accelerate the commercialization of innovations that address significant societal needs. The PFI Program has six broad goals: (1) identifying and supporting NSF-sponsored research and technologies that have the potential for accelerated commercialization; (2) supporting prior or current NSF-sponsored researchers, institutions of higher education, and nonprofit organizations that partner with an institution of higher education to undertake proof-of-concept work, technology prototypes development that have potential market value; (3) promoting sustainable partnerships between research institutions, non-profits, and industry, with the purpose of accelerating the transfer of technology; (4) developing multidisciplinary innovation ecosystems that involve and are responsive to the specific needs of academia and industry; (5) catalyzing professional development activities, mentoring, entrepreneurship and technology translation for faculty, students, and researchers; and (6) expanding the participation of women and individuals from underrepresented groups in innovation, technology translation, and entrepreneurship.
+      </p>
+      <p>
+        <em>To learn more about the PFI Program, visit our website at </em><a href="https://www.nsf.gov/eng/iip/pfi"><strong>https://www.nsf.gov/eng/iip/pfi</strong></a>.
+      </p>
+      <p>
+        <strong>The Conference </strong>
+      </p>
+      <p>
+        The annual NSF SBIR/STTR Phase II and Partnerships for Innovation Grantee Conference provides an opportunity for small businesses that have received Phase II awards and academic faculty and students from the PFI Program to share their technical and commercial achievements with each other, NSF staff, and potential partners and investors. In the spirit of networking and resource sharing, we have designed this Abstract Book as a resource for conference attendees, potential investors, and strategic partners. Industry and investor attendees are encouraged to use this resource to identify grantees of interest for one-on-one meetings onsite during the event and to visit this page on our conference website for additional opportunities: <a href="https://www.nsfiipconf.com/2018sbirp2/industry"><strong>https://www.nsfiipconf.com/2018sbirp2/industry</strong></a>.
+      </p>
+      <p>All SBIR/STTR and PFI projects at the conference are categorized into one of the following technology topic areas within this Abstract Book and at the Technology Showcase (poster/demo session) held each evening during the June 4-6, 2018, event.</p>
+      <div>
+        <ul style="font-size: 17px">
+          <li>Advanced Manufacturing and Nanotechnology (MN)</li>
+          <li>Advanced Materials and Instrumentation (MI)</li>
+          <li>Biological Technologies (BT)</li>
+          <li>Biomedical Technologies (BM) and Smart Health (SH)</li>
+          <li>Chemical and Environmental Technologies (CT)</li>
+          <li>Digital Health (DH) and Medical Devices (MD)</li>
+          <li>Educational Technologies and Applications (EA)</li>
+          <li>Electronic Hardware, Robotics and Wireless Technologies (EW)</li>
+          <li>Information Technologies (IT)</li>
+          <li>Internet of Things (I)</li>
+          <li>Semiconductors (S) and Photonic (PH) Devices and Materials</li>
+        </ul>
+      </div>
+      <p style="text-align:center;font-size:18px;max-width:800px;margin-left:auto;margin-right:auto;margin-bottom: 40px">
+        <strong>Industry and investor attendees are encouraged to use this resource to identify grantees of interest for one-on-one meetings onsite during the event.</strong>
+      </p>
+      <p style="text-align:center;">
+        <button type="button" class="btn btn-primary btn-lg" (click)="view()">View 2018 Grantee Abstract Book</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<nav *ngIf="show" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid" style="padding-left:0;">
+    <div *ngIf="!review && !rep?.selectionsComplete" id="navbar">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas" (click)="offcanvasToggle=!offcanvasToggle">Filter Topics</button>
+      </p>
+      <div class="navbar-form navbar-left">
+        <input #searchBox id="search-box" class="form-control" style="width:300px;" [(ngModel)]="searchTerm" (keyup)="search(searchBox.value)" placeholder="Search" />
+        <span style="color:#fff;padding-left:5px;">Found {{grantees?.length}} matches</span>
+        <button *ngIf="topic || searchTerm" type="button" class="btn" (click)="reset()">Reset Search</button>
+      </div>
+      <div class="navbar-form navbar-right">
+        <button type="button" class="btn btn-success">Save, Not Finished Yet</button>
+        <button *ngIf="hasInterviews()" type="button" class="btn btn-primary" (click)="preview();">Preview My Selections</button>
+      </div>
+    </div>
+    <div *ngIf="review && !rep?.selectionsComplete" id="navbar">
+      <div class="navbar-form navbar-left">
+        <button type="button" class="btn" (click)="review=!review;reset();">Back, Continue Selecting</button>
+      </div>
+      <div class="navbar-form navbar-right">
+        <button type="button" class="btn btn-success">Save, Not Finished Yet</button>
+        <button *ngIf="hasInterviews()" type="button" class="btn btn-primary" (click)="complete()">Finished, Please Schedule Meetings</button>
+      </div>
+    </div>
+    <div *ngIf="rep?.selectionsComplete" id="navbar" style="text-align:center;color:#fff;">
+      <h4>Thank you, we will setup your meetings!</h4>
+    </div>
+  </div>
+</nav>
+
+<div *ngIf="show && !review" class="row row-offcanvas row-offcanvas-right navpad" [class.active]="offcanvasToggle">
+  <div class="col-xs-12 col-sm-9">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <panel *ngFor="let g of grantees" [model]="g" [requested]="isOnTheList(g)" [complete]="rep.selectionsComplete" (interview)="setupInterview($event)"></panel>
+        </div>
+      </div>
+    </div><!--/row-->
+  </div><!--/.col-xs-12.col-sm-9-->
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+    <div class="list-group">
+      <button type="button" class="list-group-item" [class.active]="!topic" (click)="reset()">All Topics</button>
+      <button *ngFor="let t of topics" type="button" class="list-group-item" [class.active]="t===topic" (click)="select(t)">{{t}}</button>
+    </div>
+  </div><!--/.sidebar-offcanvas-->
+</div>
+
+<div *ngIf="show && review" class="row navpad">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <panel *ngFor="let g of grantees" [model]="g" [requested]="isOnTheList(g)" [complete]="rep.selectionsComplete" (interview)="setupInterview($event)"></panel>
+        </div>
+      </div>
+    </div><!--/row-->
+  </div><!--/.col-xs-12.col-sm-9-->
+</div>

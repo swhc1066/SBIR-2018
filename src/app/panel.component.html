@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab">
+    <span *ngIf="requested" class="glyphicon glyphicon-ok-circle pull-right bg-success" aria-hidden="true"></span>
+    <h4 class="panel-title">
+      <blockquote clickable (click)="show=!show" style="margin:0">
+        <p>{{model.organization}} - {{model.program}}</p>
+        <footer>{{model.title}}</footer>
+      </blockquote>
+    </h4>
+  </div>
+  <div class="panel-collapse collapse" [class.in]="show" role="tabpanel">
+    <div class="panel-body">
+      <div>Topic {{model.topic}}</div>
+      <br/>
+      <div>NSF Award No {{model.nsfAwardId}}</div>
+      <br/>
+      <p>{{model.abs}}</p>
+      <p *ngIf="!requested && !complete">
+        <button type="button" class="btn btn-primary btn-lg" (click)="talk()">Schedule A Meeting</button>
+      </p>
+      <div *ngIf="requested" class="bg-success">
+        <p class="text-center">We'll be setting your meeting up!</p>
+        <button *ngIf="!complete" type="button" class="btn btn-default pull-right" (click)="cancel()">Undo</button>
+      </div>
+    </div>
+  </div>
+</div>

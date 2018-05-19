@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" clickable (click)="show=!show">
+    <span *ngIf="model.selectionsComplete" class="glyphicon glyphicon-ok-circle pull-right bg-success" style="margin:0;" aria-hidden="true"></span>
+    <span class="badge pull-right" style="padding:3px 10px;font-size:18px;">{{model.interviewRequests?.length}}</span>
+    <span class="panel-title">{{model.name}}</span>
+  </div>
+  <div class="panel-collapse collapse" [class.in]="show" role="tabpanel">
+    <div class="panel-body">
+      <p>{{model.uuid}}<a routerLink="/user/{{model.uuid}}" class="btn btn-default pull-right">View users page</a></p>
+      <div style="padding-top:10px;"><ul class="list-group"><li class="list-group-item" *ngFor="let i of model.interviewRequests">{{i.nsfAwardId}}</li></ul></div>
+    </div>
+  </div>
+</div>
